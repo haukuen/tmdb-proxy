@@ -2,7 +2,9 @@
 
 因为 TMDB 的动漫分季过于傻逼，所以有了这个项目。
 
-## 部署教程
+fork 后在 Cloudflare Workers 上导入即可使用。
+
+## 本地部署教程
 
 ### 1) 准备
 
@@ -18,7 +20,7 @@ bun install
 ### 3) 登录 Cloudflare
 
 ```bash
-bunx wrangler login
+bun run cf:login
 ```
 
 ### 4) 本地调试（可选）
@@ -37,7 +39,6 @@ bun run cf:deploy
 
 部署成功后会返回一个 `*.workers.dev` 域名。
 
-### 6) 绑定自定义域名（可选）
 
 ## 路由说明
 
