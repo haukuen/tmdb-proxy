@@ -1,0 +1,14 @@
+{
+    "name": "tmdb-proxy",
+    "version": "1.0.0",
+    "scripts": {
+        "cf:dev": "wrangler dev",
+        "cf:deploy": "wrangler deploy"
+    },
+    "dependencies": {
+        "axios": "^1.13.4"
+    },
+    "devDependencies": {
+        "wrangler": "^4.62.0"
+    }
+}

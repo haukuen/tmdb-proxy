@@ -1,0 +1,17 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "rewrites": [
+        {
+            "source": "/",
+            "destination": "/api/health.js"
+        },
+        {
+            "source": "/t/p/:path*",
+            "destination": "https://image.tmdb.org/t/p/:path*"
+        },
+        {
+            "source": "/:path*",
+            "destination": "/api/main.js"
+        }
+    ]
+}

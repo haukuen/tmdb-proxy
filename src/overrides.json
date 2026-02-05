@@ -1,0 +1,27 @@
+{
+  "209867": {
+    "name": "葬送的芙莉莲",
+    "seasons": [
+      { "season_number": 1, "name": "葬送的芙莉莲", "originalSeason": 1, "episode_start": 1, "episode_end": 28 },
+      { "season_number": 2, "name": "葬送的芙莉莲 第二季", "originalSeason": 1, "episode_start": 29, "episode_end": 38 }
+    ]
+  },
+  "45790": {
+    "name": "JoJo的奇妙冒险",
+    "seasons": [
+      { "season_number": 1, "name": "幻影之血篇", "originalSeason": 1, "episode_start": 1, "episode_end": 9 },
+      { "season_number": 2, "name": "战斗潮流篇", "originalSeason": 1, "episode_start": 10, "episode_end": 26 },
+      { "season_number": 3, "name": "星尘斗士篇", "originalSeason": 2, "episode_start": 1, "episode_end": 48 },
+      { "season_number": 4, "name": "不灭钻石篇", "originalSeason": 3, "episode_start": 1, "episode_end": 39 },
+      { "season_number": 5, "name": "黄金之风篇", "originalSeason": 4, "episode_start": 1, "episode_end": 39 },
+      { "season_number": 6, "name": "石之海篇", "originalSeason": 5, "episode_start": 1, "episode_end": 38 }
+    ]
+  },
+  "127532": {
+    "name": "我独自升级",
+    "seasons": [
+      { "season_number": 1, "name": "我独自升级", "originalSeason": 1, "episode_start": 1, "episode_end": 12 },
+      { "season_number": 2, "name": "我独自升级：起于暗影", "originalSeason": 1, "episode_start": 13, "episode_end": 25 }
+    ]
+  }
+}
