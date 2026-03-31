@@ -1,0 +1,8 @@
+{
+  "series_id": "127532",
+  "name": "我独自升级",
+  "seasons": [
+    { "season_number": 1, "name": "我独自升级", "originalSeason": 1, "episode_start": 1, "episode_end": 12 },
+    { "season_number": 2, "name": "我独自升级：起于暗影", "originalSeason": 1, "episode_start": 13, "episode_end": 25 }
+  ]
+}

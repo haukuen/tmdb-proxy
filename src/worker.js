@@ -1,4 +1,4 @@
-import overrides from './overrides.json';
+import overrides from './overrides.generated.json';
 import { corsHeaders, resolveProxyRequest, transformApiData } from './proxy-core.mjs';
 
 export default {
