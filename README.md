@@ -48,3 +48,33 @@ bun run cf:deploy
 
 
 项目也有 Vercel 版本，在 Vercel 导入仓库后可直接部署。
+
+
+## Overrides 维护方式
+
+- 源数据目录：`src/overrides/`（可按分类建子目录，如 `anime/`）
+- 生成文件：`src/overrides.generated.json`（Worker 运行时读取）
+
+### 新增/修改一部番剧
+
+1. 在 `src/overrides/` 下新增或编辑一个 JSON 文件（建议文件名用 TMDB series id）。
+2. 文件结构示例：
+
+```json
+{
+  "series_id": "209867",
+  "name": "葬送的芙莉莲",
+  "seasons": [
+    { "season_number": 1, "name": "葬送的芙莉莲", "originalSeason": 1, "episode_start": 1, "episode_end": 28 }
+  ]
+}
+```
+
+3. 运行构建脚本：
+
+```bash
+bun run overrides:build
+```
+
+构建脚本会做基础校验（如 `series_id` 格式、季号重复、分段重叠等），然后自动生成 `src/overrides.generated.json`。
+

@@ -3,8 +3,9 @@
     "version": "1.0.0",
     "scripts": {
         "cf:login": "wrangler login",
-        "cf:dev": "wrangler dev",
-        "cf:deploy": "wrangler deploy"
+        "cf:dev": "bun run overrides:build && wrangler dev",
+        "cf:deploy": "bun run overrides:build && wrangler deploy",
+        "overrides:build": "bun run scripts/build-overrides.mjs"
     },
     "dependencies": {
         "axios": "^1.13.4"
