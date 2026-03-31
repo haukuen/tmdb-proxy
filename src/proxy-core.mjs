@@ -11,8 +11,8 @@ function parseTvPath(path) {
     const pathWithoutQuery = path.split('?')[0];
 
     const patterns = {
-        episode: /^\/3\/tv\/(\d+)\/season\/(\d+)\/episode\/(\d+)$/,
-        season: /^\/3\/tv\/(\d+)\/season\/(\d+)$/,
+        episode: /^\/3\/tv\/(\d+)\/season\/(\d+)\/episode\/(\d+)(\/[^?]+)?$/,
+        season: /^\/3\/tv\/(\d+)\/season\/(\d+)(\/[^?]+)?$/,
         series: /^\/3\/tv\/(\d+)$/
     };
 
@@ -22,7 +22,8 @@ function parseTvPath(path) {
             type: 'episode',
             seriesId: match[1],
             seasonNumber: parseInt(match[2], 10),
-            episodeNumber: parseInt(match[3], 10)
+            episodeNumber: parseInt(match[3], 10),
+            subresourcePath: match[4] || ''
         };
     }
 
@@ -31,7 +32,8 @@ function parseTvPath(path) {
         return {
             type: 'season',
             seriesId: match[1],
-            seasonNumber: parseInt(match[2], 10)
+            seasonNumber: parseInt(match[2], 10),
+            subresourcePath: match[3] || ''
         };
     }
 
@@ -130,11 +132,12 @@ function resolveProxyRequest(fullPath, overrides) {
         const seasonConfig = findSeasonConfig(override, tvInfo.seasonNumber);
         if (seasonConfig) {
             const queryString = fullPath.includes('?') ? fullPath.split('?')[1] : '';
+            const subresourcePath = tvInfo.subresourcePath || '';
             if (tvInfo.type === 'season') {
-                actualPath = `/3/tv/${tvInfo.seriesId}/season/${seasonConfig.originalSeason}${queryString ? `?${queryString}` : ''}`;
+                actualPath = `/3/tv/${tvInfo.seriesId}/season/${seasonConfig.originalSeason}${subresourcePath}${queryString ? `?${queryString}` : ''}`;
             } else {
                 const originalEpisode = getOriginalEpisodeNumber(seasonConfig, tvInfo.episodeNumber);
-                actualPath = `/3/tv/${tvInfo.seriesId}/season/${seasonConfig.originalSeason}/episode/${originalEpisode}${queryString ? `?${queryString}` : ''}`;
+                actualPath = `/3/tv/${tvInfo.seriesId}/season/${seasonConfig.originalSeason}/episode/${originalEpisode}${subresourcePath}${queryString ? `?${queryString}` : ''}`;
             }
         }
     }
@@ -151,6 +154,10 @@ function resolveProxyRequest(fullPath, overrides) {
 
 function transformApiData(responseData, responseOk, override, tvInfo) {
     if (!responseOk || !override || !tvInfo) {
+        return responseData;
+    }
+
+    if (tvInfo.subresourcePath) {
         return responseData;
     }
 
