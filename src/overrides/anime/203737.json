@@ -1,0 +1,9 @@
+{
+  "series_id": "203737",
+  "name": "我推的孩子",
+  "seasons": [
+    { "season_number": 1, "name": "我推的孩子", "originalSeason": 1, "episode_start": 1, "episode_end": 11 },
+    { "season_number": 2, "name": "我推的孩子 第二季", "originalSeason": 1, "episode_start": 12, "episode_end": 24 },
+    { "season_number": 3, "name": "我推的孩子 第三季", "originalSeason": 1, "episode_start": 25, "episode_end": 35 }
+  ]
+}
