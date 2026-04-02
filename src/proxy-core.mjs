@@ -7,6 +7,17 @@ const corsHeaders = {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization'
 };
 
+const passthroughJsonResponseHeaders = [
+    'cache-control',
+    'date',
+    'expires',
+    'last-modified',
+    'retry-after',
+    'x-ratelimit-limit',
+    'x-ratelimit-remaining',
+    'x-ratelimit-reset'
+];
+
 function parseTvPath(path) {
     const pathWithoutQuery = path.split('?')[0];
 
@@ -176,7 +187,24 @@ function transformApiData(responseData, responseOk, override, tvInfo) {
     return responseData;
 }
 
+function buildJsonResponseHeaders(upstreamHeaders) {
+    const headers = new Headers({
+        'Content-Type': 'application/json',
+        ...corsHeaders
+    });
+
+    passthroughJsonResponseHeaders.forEach((headerName) => {
+        const value = upstreamHeaders.get(headerName);
+        if (value) {
+            headers.set(headerName, value);
+        }
+    });
+
+    return headers;
+}
+
 export {
+    buildJsonResponseHeaders,
     corsHeaders,
     resolveProxyRequest,
     transformApiData

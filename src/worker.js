@@ -1,5 +1,5 @@
 import overrides from './overrides.generated.json';
-import { corsHeaders, resolveProxyRequest, transformApiData } from './proxy-core.mjs';
+import { buildJsonResponseHeaders, corsHeaders, resolveProxyRequest, transformApiData } from './proxy-core.mjs';
 
 export default {
     async fetch(request) {
@@ -51,18 +51,12 @@ export default {
 
             return new Response(JSON.stringify(transformedData), {
                 status: response.status,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...corsHeaders
-                }
+                headers: buildJsonResponseHeaders(response.headers)
             });
         } catch (error) {
             return new Response(JSON.stringify({ error: error.message }), {
                 status: 500,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...corsHeaders
-                }
+                headers: buildJsonResponseHeaders(new Headers())
             });
         }
     }

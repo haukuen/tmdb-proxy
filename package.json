@@ -5,7 +5,8 @@
         "cf:login": "wrangler login",
         "cf:dev": "bun run overrides:build && wrangler dev",
         "cf:deploy": "bun run overrides:build && wrangler deploy",
-        "overrides:build": "bun run scripts/build-overrides.mjs"
+        "overrides:build": "bun run scripts/build-overrides.mjs",
+        "test": "bun test"
     },
     "devDependencies": {
         "wrangler": "^4.62.0"
