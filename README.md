@@ -47,9 +47,6 @@ bun run cf:deploy
 - `Authorization` 请求头会透传给 TMDB
 
 
-项目也有 Vercel 版本，在 Vercel 导入仓库后可直接部署。
-
-
 ## Overrides 维护方式
 
 - 源数据目录：`src/overrides/`（可按分类建子目录，如 `anime/`）
@@ -77,4 +74,3 @@ bun run overrides:build
 ```
 
 构建脚本会做基础校验（如 `series_id` 格式、季号重复、分段重叠等），然后自动生成 `src/overrides.generated.json`。
-

@@ -7,9 +7,6 @@
         "cf:deploy": "bun run overrides:build && wrangler deploy",
         "overrides:build": "bun run scripts/build-overrides.mjs"
     },
-    "dependencies": {
-        "axios": "^1.13.4"
-    },
     "devDependencies": {
         "wrangler": "^4.62.0"
     }
